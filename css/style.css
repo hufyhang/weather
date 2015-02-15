@@ -26,8 +26,8 @@ html, body {
 
   cursor: pointer;
   color: #fff;
+  font-size: 20px;
   padding: 10px 15px;
-  border: 1px solid #fff;
   border-radius: 60px;
 }
 
@@ -76,10 +76,10 @@ textarea#location-text {
 
 .weather-item {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 
   list-style: none;
 
@@ -95,12 +95,12 @@ textarea#location-text {
 
 @keyframes slidein {
   from {top: -500px;}
-  to {top: 0;}
+  to {top: 0px;}
 }
 
 @-webkit-keyframes slidein {
   from {top: -500px;}
-  to {top: 0;}
+  to {top: 0px;}
 }
 
 .info {
