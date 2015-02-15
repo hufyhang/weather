@@ -15,13 +15,14 @@ var YAHOO = {
 };
 
 var ICON = {
-  SUNNY: './img/sunny.png',
-  CLOUD: './img/cloudy.png',
-  PART_CLOUD: './img/part-cloudy.png',
-  HAZE: './img/haze.png',
-  FOGGY: './img/fog.png',
-  RAIN: './img/rain.png',
-  SNOW: './img/snow.png',
+  SUNNY: './img/Sunny.png',
+  CLOUD: './img/Cloudy.png',
+  PART_CLOUD: './img/Mostly Cloudy.png',
+  MIST: './img/Haze.png',
+  HAZE: './img/Haze.png',
+  FOGGY: './img/Haze.png',
+  RAIN: './img/Drizzle.png',
+  SNOW: './img/Snow.png',
   NA: './img/na.png',
 
  PREFIX: '<img width="100px" height="100px" src="',
@@ -209,6 +210,9 @@ $ch.use(['./chop-bundle'], function () {
       case 'MOSTLY CLOUDY':
       case 'PARTLY CLOUDY':
       return ICON.PART_CLOUD;
+
+      case 'MIST':
+      return ICON.MIST;
 
       case 'HAZE':
       return ICON.HAZE;
