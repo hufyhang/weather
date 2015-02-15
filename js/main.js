@@ -53,7 +53,7 @@ $ch.use(['./chop-bundle'], function () {
         var state = $ch.source('state');
         if (state === STATE.WEATHER) {
           $ch.source('state', STATE.CONFIG);
-          var configTemplate = $ch.readFile('./config_template.html');
+          var configTemplate = $ch.readFile('./details_template.html');
           $scope.container.html(configTemplate);
           initConfig();
 
@@ -104,6 +104,13 @@ $ch.use(['./chop-bundle'], function () {
 
 
       $event.listen('retrieve weather', function () {
+        // // Add current geolocation to `locs`.
+        // console.log(locs);
+        // var current = $ch.http('//freegeoip.net/json/', {async: false}).responseText;
+        // current = JSON.parse(current).city;
+        // locs.unshift(current);
+        // console.log(locs);
+
         locs.forEach(function (loc, index) {
           var url = YAHOO.PREFIX + loc + YAHOO.POSTFIX;
           $ch.http(url, {

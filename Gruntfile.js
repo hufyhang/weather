@@ -49,7 +49,7 @@ module.exports = function (grunt) {
           'dist/index.html': 'index.html',
           'dist/weather_template.html': 'weather_template.html',
           'dist/weather_item_template.html': 'weather_item_template.html',
-          'dist/config_template.html': 'config_template.html'
+          'dist/details_template.html': 'details_template.html'
         }
       }
     },
@@ -88,14 +88,14 @@ module.exports = function (grunt) {
     },
 
 
-    'ftp-deploy': {
+    ftpush: {
       dist: {
         auth: {
           host: 'feifeihang.info',
           port: 21,
           authKey: 'host'
         },
-        src: 'dist',
+        src: './dist',
         dest: '/public_html/weather'
       }
     }
@@ -111,10 +111,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-ftp-deploy');
+  grunt.loadNpmTasks('grunt-ftpush');
 
   grunt.registerTask('serve', ['connect:server', 'open:dev', 'watch']);
   grunt.registerTask('build', ['newer:uglify', 'newer:htmlmin', 'newer:cssmin', 'newer:copy', 'newer:imagemin']);
-  grunt.registerTask('deploy', ['ftp-deploy:dist']);
+  grunt.registerTask('deploy', ['ftpush:dist']);
 
 };

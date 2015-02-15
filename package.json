@@ -15,6 +15,7 @@
     "grunt-contrib-imagemin": "^0.9.3",
     "time-grunt": "^1.0.0",
     "grunt-newer": "^1.1.0",
-    "grunt-ftp-deploy": "^0.1.10"
+    "grunt-ftp-deploy": "^0.1.10",
+    "grunt-ftpush": "^0.3.3"
   }
 }
