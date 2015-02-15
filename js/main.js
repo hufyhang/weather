@@ -103,6 +103,8 @@ $ch.use(['./chop-bundle'], function () {
         }
       });
 
+      bindArrowKeys();
+
 
       $event.listen('retrieve weather', function () {
         // // Add current geolocation to `locs`.
@@ -241,9 +243,23 @@ $ch.use(['./chop-bundle'], function () {
     });
   }
 
+  function bindArrowKeys() {
+    var weatherScope = $ch.scope('weatherScope');
+    if (weatherScope) {
+      $ch.find('body').on('keyup', function (evt) {
+        if (evt.keyCode === 37) { // left arrow
+          weatherScope._eventHandler.emit('goPrevious');
+        }
+        else if (evt.keyCode === 39) { // right arrow
+          weatherScope._eventHandler.emit('goNext');
+        }
+      });
+    }
+
+  }
+
 
   $ch.source('current index', 0);
   $ch.source('state', STATE.WEATHER);
   $ch.event.emit('show weathers');
-
 });
