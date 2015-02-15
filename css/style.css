@@ -66,6 +66,8 @@ textarea#location-text {
   -o-user-select: none;
   user-select: none;
 
+  margin-left: 10px;
+
   padding: 10px 7px;
   border: 1px solid #fff;
   border-radius: 60px;
@@ -86,6 +88,19 @@ textarea#location-text {
   margin: 0;
   padding: 0;
   padding-top: 150px;
+
+  animation: slidein 0.7s;
+  -webkit-animation: slidein 0.7s;
+}
+
+@keyframes slidein {
+  from {top: -500px;}
+  to {top: 0;}
+}
+
+@-webkit-keyframes slidein {
+  from {top: -500px;}
+  to {top: 0;}
 }
 
 .info {

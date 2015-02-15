@@ -77,6 +77,32 @@ $ch.use(['./chop-bundle'], function () {
     $ch.scope('weatherScope', function ($scope, $event) {
       var data = [];
 
+      $scope.touch = {start: 0, end: 0};
+
+      $scope.weatherItem.on('touchmove', function (event) {
+        event.preventDefault();
+      });
+
+      $scope.weatherItem.on('touchstart', function (event) {
+        var touch = event.touches[0];
+        $scope.touch = {start: 0, end: 0};
+        $scope.touch.start = touch.pageX;
+      });
+
+      $scope.weatherItem.on('touchmove', function (event) {
+        var touch = event.touches[0];
+        $scope.touch.end = touch.pageX;
+        var x = $scope.touch;
+
+        if (x.start > x.end) {
+          $event.emit('goNext');
+        }
+        else if (x.start < x.end) {
+          $event.emit('goPrevious');
+        }
+      });
+
+
       $event.listen('retrieve weather', function () {
         locs.forEach(function (loc, index) {
           var url = YAHOO.PREFIX + loc + YAHOO.POSTFIX;
