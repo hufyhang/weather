@@ -1,0 +1,134 @@
+* {
+  font-weight: lighter;
+}
+
+html, body {
+  background: #1e1e23;
+  height: 100%;
+  width: 100%;
+}
+
+#main-container {
+  text-align: center;
+  color: #fff;
+}
+
+#config-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  position: absolute;
+  z-index: 10;
+  top: 25px;
+  right: 30px;
+
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 15px;
+  border: 1px solid #fff;
+  border-radius: 60px;
+}
+
+[ch-scope="configScope"] {
+  background: #2497d6;
+
+  position: absolute;
+  padding-top: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+#location-hint {
+  font-size: 20px;
+}
+
+textarea#location-text {
+  margin-top: 10px;
+  width: 70%;
+  height: 200px;
+}
+
+#nav-div {
+  position: absolute;
+  z-index: 10;
+  bottom: 30px;
+  right: 30px;
+}
+
+.nav-btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+  padding: 10px 7px;
+  border: 1px solid #fff;
+  border-radius: 60px;
+  cursor: pointer;
+}
+
+.weather-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  list-style: none;
+
+  background: #424242;
+
+  margin: 0;
+  padding: 0;
+  padding-top: 150px;
+}
+
+.info {
+  padding-top: 15px;
+}
+
+.name {
+  font-size: 25px;
+  font-weight: lighter;
+}
+
+.name::first-letter {
+  font-size: 200%;
+}
+
+.temp {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+.sunny, .clear, .fair {
+  background: #ec5451;
+}
+
+.cloudy {
+  background: #453556;
+}
+
+.mostly-cloudy, .partly-cloudy {
+  background: #ef9f1f;
+}
+
+.fog, .haze, .smoke {
+  background: #c0c4a7;
+}
+
+.rainny, .snowy {
+  background: #5ec8e3;
+}
