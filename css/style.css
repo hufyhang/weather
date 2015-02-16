@@ -130,7 +130,7 @@ textarea#location-text {
 /*Styles for Details Template*/
 [ch-scope="configScope"] {
   text-align: center;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #location-list {
