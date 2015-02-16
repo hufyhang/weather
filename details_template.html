@@ -1,4 +1,13 @@
 <div ch-scope="configScope">
-  <div id="location-hint">Locations: (separate by new lines)</div>
-  <textarea id="location-text" ch-name="location" cols="10" ch-source="locations"></textarea>
+  <div id="input-bar">
+    <input type="text" id="location-input" ch-data="input" placeholder="city name...">
+    <span id="add-btn" ch-event="click: addLocation">Add</span>
+  </div>
+
+  <ul id="location-list" ch-name="list" ch-inline>
+    <li class="location-item">
+      <span class="location-remove" ch-click="$ch.event.emit('remove location', '{{name}}');">Delete</span>
+      <span class="location-name">{{name}}</span>
+    </li>
+  </ul>
 </div>

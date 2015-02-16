@@ -127,7 +127,60 @@ textarea#location-text {
   font-weight: bold;
 }
 
+/*Styles for Details Template*/
+[ch-scope="configScope"] {
+  text-align: center;
+  overflow: scroll;
+}
 
+#location-list {
+  display: table;
+  margin: 0 auto;
+  list-style: none;
+  text-align: left;
+  width: 300px;
+  padding: 0;
+}
+
+.location-item {
+  padding: 5px 20px 5px 5px;
+  margin-bottom: 3px;
+  background: #1f3857;
+  padding: 10px 10px 10px 0px;
+}
+
+.location-remove {
+  background: #d42541;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.location-name {
+  background: #1f3857;
+  padding: 10px;
+}
+
+#input-bar {
+  margin: 10px;
+}
+
+#location-input {
+  width: 230px;
+  border-radius: 0px;
+  margin: 0;
+}
+
+#add-btn {
+  cursor: pointer;
+  background: #e29426;
+  padding: 8px 20px;
+  text-transform: uppercase;
+}
+
+
+
+/* Styles for weather symbols */
 
 .sunny, .clear, .fair {
   background: #ec5451;

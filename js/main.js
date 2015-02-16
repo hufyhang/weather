@@ -96,12 +96,24 @@ $ch.use(['./chop-bundle'], function () {
         $scope.touch.end = touch.pageX;
         var x = $scope.touch;
 
-        if (x.start > x.end) {
+        var offsetL = x.end - x.start;
+        var offsetR = x.start - x.end;
+        $ch.find('.weather-item', $scope.weatherItem.el)
+          .css('left', offsetL + 'px')
+          .css('right', offsetR + 'px');
+
+        if (offsetL > 100) {
           $event.emit('goNext');
         }
-        else if (x.start < x.end) {
+        else if (offsetR > 100) {
           $event.emit('goPrevious');
         }
+      });
+
+      $scope.weatherItem.on('touchend', function() {
+        $ch.find('.weather-item', $scope.weatherItem.el)
+          .css('left', '0')
+          .css('right', '0');
       });
 
       bindArrowKeys();
@@ -244,8 +256,48 @@ $ch.use(['./chop-bundle'], function () {
 
 
   function initConfig() {
-    $ch.scope('configScope', function ($scope) {
-      $scope.location.val(locs.join('\n'));
+    $ch.scope('configScope', function ($scope, $event) {
+      $event.listen('load', function ($scope) {
+        var locList = [];
+        locs.forEach(function (loc, index) {
+          locList.push({name:  loc, id: index});
+        });
+        $scope.list.inline(locList);
+      });
+
+      $event.listen('addLocation', function () {
+        var city = $scope.input.get() || '';
+        city = city.trim();
+        if (city.match(/\w+/)) {
+          var locsStr = $ch.store.cookie(COOKIES);
+          locsStr += '&' + city;
+          $ch.store.cookie(COOKIES, locsStr, COOKIES_LENGTH);
+
+          locs = locsStr.split('&');
+          $ch.source('locations', locs.join('\n'));
+          $event.emit('load', $scope);
+        }
+      });
+
+      $event.emit('load', $scope);
+
+
+      $ch.event.listen('remove location', function (id) {
+        var locsStr = $ch.store.cookie(COOKIES);
+        var regex = new RegExp(id + '\\&?', 'g');
+        locsStr = locsStr.replace(regex, '');
+
+        if (locsStr[locsStr.length - 1] === '&') {
+          locsStr = locsStr.substring(0, locsStr.length - 1);
+        }
+        $ch.store.cookie(COOKIES, locsStr, COOKIES_LENGTH);
+
+        locs = locsStr.split('&');
+        $ch.source('locations', locs.join('\n'));
+        $event.emit('load', $scope);
+      });
+
+
     });
   }
 
@@ -264,8 +316,8 @@ $ch.use(['./chop-bundle'], function () {
 
   }
 
-
   $ch.source('current index', 0);
   $ch.source('state', STATE.WEATHER);
   $ch.event.emit('show weathers');
 });
+
