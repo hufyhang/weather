@@ -22,6 +22,7 @@ var ICON = {
   HAZE: './img/Haze.png',
   FOGGY: './img/Haze.png',
   RAIN: './img/Drizzle.png',
+  LIST_RAIN: './img/Slight Drizzle.png',
   SNOW: './img/Snow.png',
   NA: './img/na.png',
 
@@ -222,8 +223,11 @@ $ch.use(['./chop-bundle'], function () {
       case 'FOG':
       return ICON.FOGGY;
 
-      case 'RAINNY':
+      case 'RAIN':
       return ICON.RAIN;
+
+      case 'LIGHT RAIN':
+      return ICON.LIST_RAIN;
 
       case 'THUNDER':
       return ICON.THUNDER;

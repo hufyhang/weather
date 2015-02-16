@@ -138,13 +138,13 @@ textarea#location-text {
 }
 
 .mostly-cloudy, .partly-cloudy {
-  background: #ef9f1f;
+  background: #e4803c;
 }
 
 .mist, .fog, .haze, .smoke {
   background: #29496a;
 }
 
-.rainny, .snowy {
-  background: #5ec8e3;
+.rain, .snow, .light-rain {
+  background: #5997b9;
 }
