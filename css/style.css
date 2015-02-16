@@ -32,7 +32,7 @@ html, body {
 }
 
 [ch-scope="configScope"] {
-  background: #2497d6;
+  background: #655e9a;
 
   position: absolute;
   padding-top: 100px;
@@ -144,13 +144,15 @@ textarea#location-text {
 
 .location-item {
   padding: 5px 20px 5px 5px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
   background: #1f3857;
+  border: 1px solid #3f6dbb;
   padding: 10px 10px 10px 0px;
 }
 
 .location-remove {
   background: #d42541;
+  border: 1px solid #ea0c39;
   padding: 10px;
   text-transform: uppercase;
   cursor: pointer;
@@ -169,6 +171,19 @@ textarea#location-text {
   width: 230px;
   border-radius: 0px;
   margin: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid #182845;
+  color: #000;
+  font-size: 20px;
+  transition: background 0.3s;
+}
+
+#location-input:focus, #location-input:active {
+  outline: none;
+  box-shadow: none;
+  border-bottom: 3px solid #3965ae;
+  background: #fff;
 }
 
 #add-btn {
@@ -176,6 +191,7 @@ textarea#location-text {
   background: #e29426;
   padding: 8px 20px;
   text-transform: uppercase;
+  border: 1px solid #ffa528;
 }
 
 
@@ -186,11 +202,11 @@ textarea#location-text {
   background: #ec5451;
 }
 
-.cloudy {
+.mostly-cloudy, .cloudy {
   background: #453556;
 }
 
-.mostly-cloudy, .partly-cloudy {
+.partly-cloudy {
   background: #e4803c;
 }
 

@@ -1,6 +1,6 @@
 <div ch-scope="configScope">
   <div id="input-bar">
-    <input type="text" id="location-input" ch-data="input" placeholder="city name...">
+    <input type="text" id="location-input" ch-data="input" ch-event="keyup: keyLocation" placeholder="city name...">
     <span id="add-btn" ch-event="click: addLocation">Add</span>
   </div>
 

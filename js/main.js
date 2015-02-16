@@ -128,13 +128,6 @@ $ch.use(['./chop-bundle'], function () {
 
 
       $event.listen('retrieve weather', function () {
-        // // Add current geolocation to `locs`.
-        // console.log(locs);
-        // var current = $ch.http('//freegeoip.net/json/', {async: false}).responseText;
-        // current = JSON.parse(current).city;
-        // locs.unshift(current);
-        // console.log(locs);
-
         locs.forEach(function (loc, index) {
           var url = YAHOO.PREFIX + loc + YAHOO.POSTFIX;
           $ch.http(url, {
@@ -202,6 +195,19 @@ $ch.use(['./chop-bundle'], function () {
         });
       }
 
+      // Add current geolocation to `locs`.
+      // var current = $ch.http('//freegeoip.net/json/', {async: false}).responseText;
+      // current = JSON.parse(current).city;
+      // locs.unshift(current);
+      // data.unshift({
+      //   name: current.toUpperCase().trim(),
+      //   ready: false,
+      //   temp: 0,
+      //   text: 'loading...',
+      //   icon: ICON.PREFIX + './img/na.png' + ICON.POSTFIX
+      // })
+      // console.log(locs);
+
       // Now, load weather item template.
       $scope.index = $ch.source('current index');
       $scope.template = $ch.readFile('./weather_item_template.html');
@@ -228,9 +234,9 @@ $ch.use(['./chop-bundle'], function () {
       return ICON.SUNNY;
 
       case 'CLOUDY':
+      case 'MOSTLY CLOUDY':
       return ICON.CLOUD;
 
-      case 'MOSTLY CLOUDY':
       case 'PARTLY CLOUDY':
       return ICON.PART_CLOUD;
 
@@ -284,6 +290,14 @@ $ch.use(['./chop-bundle'], function () {
           locs = locsStr.split('&');
           $ch.source('locations', locs.join('\n'));
           $event.emit('load', $scope);
+          $scope.input.set('');
+        }
+      });
+
+      $event.listen('keyLocation', function (evt) {
+        // Add only if Enter pressed.
+        if (evt.keyCode === 13) {
+          $event.emit('addLocation');
         }
       });
 
