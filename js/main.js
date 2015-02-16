@@ -25,6 +25,7 @@ var ICON = {
   LIST_RAIN: './img/Slight Drizzle.png',
   SNOW: './img/Snow.png',
   WINDY: './img/Windy.png',
+  THUNDER: './img/Thunderstorms.png',
   NA: './img/na.png',
 
  PREFIX: '<img width="100px" height="100px" src="',
