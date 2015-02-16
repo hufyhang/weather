@@ -250,22 +250,22 @@ textarea#location-text {
 
 /* Styles for weather symbols */
 
-.mostly-sunny, .sunny, .clear, .fair {
+.code31, .code32, .code33, .code34, .code36 {
   background: #ec5451;
 }
 
-.mostly-cloudy, .cloudy {
+.code26, .code27, .code28 {
   background: #453556;
 }
 
-.partly-cloudy {
+.code29, .code30, .code44 {
   background: #e4803c;
 }
 
-.mist, .fog, .haze, .smoke {
+.code19, .code20, .code21, .code22, .code0, .code1, .code2, .code24 {
   background: #29496a;
 }
 
-.showers, .rain, .drizzle, .snow, .light-rain-shower, .light-rain, .light-drizzle {
+.code8, .code9, .code10, .code11, .code12, .code35, .code14, .code40, .code5, .code6, .code7, .code13, .code15, .code16, .code17, .code18, .code41, .code42, .code46, .code3, .code4, .code37, .code38, .code39, .code45, .code47 {
   background: #5997b9;
 }

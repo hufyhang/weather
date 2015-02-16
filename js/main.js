@@ -147,11 +147,13 @@ $ch.use(['./chop-bundle'], function () {
                   data[index].temp = '?';
                   data[index].icon = ICON.PREFIX + ICON.NA + ICON.POSTFIX;
                   data[index].text = '';
+                  data[index].code = 9999;
                 } else {
                   raw = raw.results.channel.item.condition;
                   data[index].ready = true;
                   data[index].temp = raw.temp;
                   data[index].text = raw.text;
+                  data[index].code = raw.code;
                   data[index].name = data[index].name.split(',')[0].trim();
                   data[index].icon = ICON.PREFIX + workoutIconCode(raw.code) + ICON.POSTFIX;
 
