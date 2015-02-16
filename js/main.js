@@ -30,6 +30,14 @@ var ICON = {
  POSTFIX: '" alt="weather icon">'
 };
 
+
+// Lock screen rotation first.
+var lockOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
+if (lockOrientation) {
+  lockOrientation(["portrait-primary", "portrait-secondary"]);
+}
+
+
 $ch.use(['./chop-bundle'], function () {
   'use strict';
 
