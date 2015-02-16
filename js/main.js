@@ -24,6 +24,7 @@ var ICON = {
   RAIN: './img/Drizzle.png',
   LIST_RAIN: './img/Slight Drizzle.png',
   SNOW: './img/Snow.png',
+  WINDY: './img/Windy.png',
   NA: './img/na.png',
 
  PREFIX: '<img width="100px" height="100px" src="',
@@ -152,7 +153,7 @@ $ch.use(['./chop-bundle'], function () {
                   data[index].temp = raw.temp;
                   data[index].text = raw.text;
                   data[index].name = data[index].name.split(',')[0].trim();
-                  data[index].icon = ICON.PREFIX + workoutIcon(raw.text) + ICON.POSTFIX;
+                  data[index].icon = ICON.PREFIX + workoutIconCode(raw.code) + ICON.POSTFIX;
 
                   data[index].text = data[index].text.toLowerCase().replace(/\ /g, '-');
                 }
@@ -231,48 +232,73 @@ $ch.use(['./chop-bundle'], function () {
     });
   }
 
-  function workoutIcon(weather) {
-    weather = weather.toUpperCase();
-    switch (weather) {
-      case 'SUNNY':
-      case 'CLEAR':
-      case 'FAIR':
-      case 'MOSTLY SUNNY':
+  function workoutIconCode(code) {
+    code = parseInt(code, 10);
+    switch (code) {
+      case 31:
+      case 32:
+      case 33:
+      case 34:
+      case 36:
       return ICON.SUNNY;
 
-      case 'CLOUDY':
-      case 'MOSTLY CLOUDY':
+      case 26:
+      case 27:
+      case 28:
       return ICON.CLOUD;
 
-      case 'PARTLY CLOUDY':
+      case 29:
+      case 30:
+      case 44:
       return ICON.PART_CLOUD;
 
-      case 'MIST':
-      return ICON.MIST;
-
-      case 'HAZE':
+      case 19:
+      case 20:
+      case 21:
+      case 22:
       return ICON.HAZE;
 
-      case 'FOG':
-      return ICON.FOGGY;
-
-      case 'RAIN':
-      case 'SHOWERS':
-      case 'DRIZZLE':
+      case 8:
+      case 9:
+      case 10:
+      case 11:
+      case 12:
+      case 35:
       return ICON.RAIN;
 
-      case 'LIGHT RAIN':
-      case 'LIGHT RAIN SHOWER':
-      case 'LIGHT DRIZZLE':
+      case 14:
+      case 40:
       return ICON.LIST_RAIN;
 
-      case 'THUNDER':
+      case 5:
+      case 6:
+      case 7:
+      case 13:
+      case 15:
+      case 16:
+      case 17:
+      case 18:
+      case 41:
+      case 42:
+      case 46:
+      return ICON.SNOW;
+
+      case 3:
+      case 4:
+      case 37:
+      case 38:
+      case 39:
+      case 45:
+      case 47:
       return ICON.THUNDER;
 
-      case 'WINDY':
+      case 0:
+      case 1:
+      case 2:
+      case 24:
       return ICON.WINDY;
 
-      case 'UNKNOWN':
+      default:
       return ICON.NA;
     }
   }
@@ -281,7 +307,7 @@ $ch.use(['./chop-bundle'], function () {
     $ch.scope('forecastScope', function ($scope, $event) {
       var forecast = data.raw.query.results.channel.item.forecast;
       forecast = forecast.map(function (item) {
-        item.icon = ICON.PREFIX + workoutIcon(item.text) + ICON.POSTFIX;
+        item.icon = ICON.PREFIX + workoutIconCode(item.code) + ICON.POSTFIX;
         return item;
       });
       $scope.list.inline(forecast);

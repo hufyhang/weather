@@ -48,6 +48,7 @@ module.exports = function (grunt) {
         files: {
           'dist/index.html': 'index.html',
           'dist/weather_template.html': 'weather_template.html',
+          'dist/weather_forecast_template.html': 'weather_forecast_template.html',
           'dist/weather_item_template.html': 'weather_item_template.html',
           'dist/details_template.html': 'details_template.html'
         }

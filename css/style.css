@@ -178,7 +178,7 @@ textarea#location-text {
 [ch-scope="configScope"] {
   text-align: center;
   overflow: auto;
-  background: #2f435b;
+  background: #bdc3c7;
 
   position: absolute;
   padding-top: 100px;
@@ -198,19 +198,21 @@ textarea#location-text {
 }
 
 .location-item {
-  background: #306bab;
-  padding: 15px 10px 15px 0px;
+  font-weight: bold;
+  /*background: #306bab;*/
+  padding: 10px 10px 10px 50px;
 }
 
 .location-remove {
-  background: #b12420;
+  /*background: #b12420;*/
+  color: #e74c3c;
   padding: 15px;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .location-name {
-  background: #306bab;
+  /*background: #306bab;*/
   padding: 10px;
 }
 
@@ -219,7 +221,7 @@ textarea#location-text {
 }
 
 #location-input {
-  width: 200px;
+  width: 150px;
   border-radius: 0px;
   margin: 0;
   background: transparent;
@@ -241,7 +243,7 @@ textarea#location-text {
   cursor: pointer;
   background: #d34218;
   padding: 10px 20px 8px 20px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 
