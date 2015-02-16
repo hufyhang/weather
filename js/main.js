@@ -224,9 +224,11 @@ $ch.use(['./chop-bundle'], function () {
       return ICON.FOGGY;
 
       case 'RAIN':
+      case 'DRIZZLE':
       return ICON.RAIN;
 
       case 'LIGHT RAIN':
+      case 'LIGHT DRIZZLE':
       return ICON.LIST_RAIN;
 
       case 'THUNDER':

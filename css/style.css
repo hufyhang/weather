@@ -145,6 +145,6 @@ textarea#location-text {
   background: #29496a;
 }
 
-.rain, .snow, .light-rain {
+.rain, .drizzle, .snow, .light-rain, .light-drizzle {
   background: #5997b9;
 }
