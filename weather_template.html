@@ -1,11 +1,13 @@
 <div ch-scope="weatherScope">
   <div id="weather-container">
 
-    <div class="weather-item-wrapper" id="weather-item" ch-name="weatherItem">
+    <div class="weather-item-wrapper" id="weather-item" ch-name="weatherItem" ch-event="click: forecast">
 
     </div>
 
   </div>
+
+  <div id="forecast-container" ch-name="forecastContainer"></div>
 
   <div id="nav-div" class="ch-row ch-align-right">
     <span class="nav-btn ch-xs-0 ch-sm-1" id="previous-btn" ch-event="click: goPrevious">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>

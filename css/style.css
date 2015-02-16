@@ -31,19 +31,66 @@ html, body {
   border-radius: 60px;
 }
 
-[ch-scope="configScope"] {
-  background: #655e9a;
-
+/* styles of forecast */
+[ch-scope="forecastScope"] {
   position: absolute;
-  padding-top: 100px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  z-index: 20;
+  top: 50px;
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+
+  animation: bounceup 0.3s;
+  -webkit-animation: bounceup 0.3s;
 }
 
-#location-hint {
+@keyframes bounceup {
+  from {top: -500px;}
+  to {top: 50px;}
+}
+
+@-webkit-keyframes bounceup {
+  from {top: -500px;}
+  to {top: 50px;}
+}
+
+#forecast-list {
+  display: table;
+  list-style: none;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+  text-align: left;
+  background: #535361;
+}
+
+
+.forecast-item {
+  padding: 10px 20px;
   font-size: 20px;
+  text-transform: uppercase;
+}
+
+.day {
+  display: inline-block;
+  width: 50px;
+  color: #febb33;
+  font-weight: bold;
+}
+
+.forecast-low, .forecast-high {
+  display: inline-block;
+  margin-left: 10px;
+  width: 30px;
+  color: #28acf3;
+  font-weight: bold;
+}
+
+.forecast-icon img {
+  height: 2em;
+  width: 2em;
+  vertical-align: middle;
 }
 
 textarea#location-text {
@@ -131,6 +178,14 @@ textarea#location-text {
 [ch-scope="configScope"] {
   text-align: center;
   overflow: auto;
+  background: #2f435b;
+
+  position: absolute;
+  padding-top: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 #location-list {
@@ -143,23 +198,19 @@ textarea#location-text {
 }
 
 .location-item {
-  padding: 5px 20px 5px 5px;
-  margin-bottom: 5px;
-  background: #1f3857;
-  border: 1px solid #3f6dbb;
-  padding: 10px 10px 10px 0px;
+  background: #306bab;
+  padding: 15px 10px 15px 0px;
 }
 
 .location-remove {
-  background: #d42541;
-  border: 1px solid #ea0c39;
-  padding: 10px;
+  background: #b12420;
+  padding: 15px;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .location-name {
-  background: #1f3857;
+  background: #306bab;
   padding: 10px;
 }
 
@@ -168,12 +219,12 @@ textarea#location-text {
 }
 
 #location-input {
-  width: 230px;
+  width: 200px;
   border-radius: 0px;
   margin: 0;
   background: transparent;
   border: none;
-  border-bottom: 3px solid #182845;
+  border-bottom: 3px solid #c73d17;
   color: #000;
   font-size: 20px;
   transition: background 0.3s;
@@ -182,23 +233,22 @@ textarea#location-text {
 #location-input:focus, #location-input:active {
   outline: none;
   box-shadow: none;
-  border-bottom: 3px solid #3965ae;
+  border-bottom: 3px solid #e2772c;
   background: #fff;
 }
 
 #add-btn {
   cursor: pointer;
-  background: #e29426;
-  padding: 8px 20px;
+  background: #d34218;
+  padding: 10px 20px 8px 20px;
   text-transform: uppercase;
-  border: 1px solid #ffa528;
 }
 
 
 
 /* Styles for weather symbols */
 
-.sunny, .clear, .fair {
+.mostly-sunny, .sunny, .clear, .fair {
   background: #ec5451;
 }
 
@@ -214,6 +264,6 @@ textarea#location-text {
   background: #29496a;
 }
 
-.rain, .drizzle, .snow, .light-rain, .light-drizzle {
+.showers, .rain, .drizzle, .snow, .light-rain-shower, .light-rain, .light-drizzle {
   background: #5997b9;
 }

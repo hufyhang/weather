@@ -32,10 +32,10 @@ var ICON = {
 
 
 // Lock screen rotation first.
-var lockOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
-if (lockOrientation) {
-  lockOrientation(["portrait-primary", "portrait-secondary"]);
-}
+// var lockOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
+// if (lockOrientation) {
+//   lockOrientation(["portrait-primary", "portrait-secondary"]);
+// }
 
 
 $ch.use(['./chop-bundle'], function () {
@@ -116,6 +116,12 @@ $ch.use(['./chop-bundle'], function () {
         else if (offsetR > 100) {
           $event.emit('goPrevious');
         }
+      });
+
+      $event.listen('forecast', function () {
+        var template = $ch.readFile('./weather_forecast_template.html');
+        $scope.forecastContainer.html(template);
+        initForecast(data[$ch.source('current index')], $scope.forecastContainer);
       });
 
       $scope.weatherItem.on('touchend', function() {
@@ -231,6 +237,7 @@ $ch.use(['./chop-bundle'], function () {
       case 'SUNNY':
       case 'CLEAR':
       case 'FAIR':
+      case 'MOSTLY SUNNY':
       return ICON.SUNNY;
 
       case 'CLOUDY':
@@ -250,10 +257,12 @@ $ch.use(['./chop-bundle'], function () {
       return ICON.FOGGY;
 
       case 'RAIN':
+      case 'SHOWERS':
       case 'DRIZZLE':
       return ICON.RAIN;
 
       case 'LIGHT RAIN':
+      case 'LIGHT RAIN SHOWER':
       case 'LIGHT DRIZZLE':
       return ICON.LIST_RAIN;
 
@@ -268,6 +277,44 @@ $ch.use(['./chop-bundle'], function () {
     }
   }
 
+  function initForecast(data, host) {
+    $ch.scope('forecastScope', function ($scope, $event) {
+      var forecast = data.raw.query.results.channel.item.forecast;
+      forecast = forecast.map(function (item) {
+        item.icon = ICON.PREFIX + workoutIcon(item.text) + ICON.POSTFIX;
+        return item;
+      });
+      $scope.list.inline(forecast);
+
+      $event.listen('close', function() {
+        host.html('');
+      });
+
+
+      // add swipe gesture for closing forecast.
+      var element = $ch.find('[ch-scope="forecastScope"]', host.el);
+      var y = {start: 0, end: 0};
+      var top = 50;
+      $scope.list.on('touchstart', function (evt) {
+        y.start = evt.touches[0].pageY;
+      });
+
+      $scope.list.on('touchmove', function (evt) {
+        y.end = evt.touches[0].pageY;
+
+        var offset = y.start - y.end;
+        element.css('top', 50 - offset + 'px');
+
+        if (offset > 100) {
+          $event.emit('close');
+        }
+      });
+
+      $scope.list.on('touchend', function () {
+        element.css('top', '50px');
+      });
+    });
+  }
 
   function initConfig() {
     $ch.scope('configScope', function ($scope, $event) {
