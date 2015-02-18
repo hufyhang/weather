@@ -113,10 +113,10 @@ $ch.use(['./chop-bundle'], function () {
           .css('right', offsetR + 'px');
 
         if (offsetL > 100) {
-          $event.emit('goNext');
+          $event.emit('goPrevious');
         }
         else if (offsetR > 100) {
-          $event.emit('goPrevious');
+          $event.emit('goNext');
         }
       });
 
@@ -347,6 +347,15 @@ $ch.use(['./chop-bundle'], function () {
 
   function initConfig() {
     $ch.scope('configScope', function ($scope, $event) {
+     $ch.http('//freegeoip.net/json/', {
+      done: function (res) {
+        if (res.status === 200 || res.status === 304) {
+         var current = JSON.parse(res.responseText).city;
+         $scope.input.set(current);
+        }
+      }
+     });
+
       $event.listen('load', function ($scope) {
         var locList = [];
         locs.forEach(function (loc, index) {
